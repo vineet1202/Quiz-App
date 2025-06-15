@@ -31,3 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# React / Node.js (for frontend)
+frontend/node_modules/
+frontend/build/
+frontend/.env
