@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,14 +15,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.infy.quizapp.dto.QuestionDTO;
 import com.infy.quizapp.dto.Response;
+import com.infy.quizapp.entity.Quiz;
 import com.infy.quizapp.service.QuizService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/quiz")
 public class QuizController {
 	
 	@Autowired
 	QuizService quizService;
+	
+	@GetMapping("/all")
+	public ResponseEntity<List<Quiz>> getAllQuiz(){
+		return quizService.getAllQuiz();
+	}
 	
 	@PostMapping("/create")
 	public ResponseEntity<String> createQuiz(@RequestParam String category, @RequestParam int noOfQues, @RequestParam String title ){

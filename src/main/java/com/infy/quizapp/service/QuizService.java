@@ -69,4 +69,9 @@ public class QuizService {
 		
 		return new ResponseEntity<>(count, HttpStatus.OK);
 	}
+
+	public ResponseEntity<List<Quiz>> getAllQuiz() {
+		// TODO Auto-generated method stub
+		return new ResponseEntity<>(quizRepo.findAll(), HttpStatus.OK);
+	}
 }
