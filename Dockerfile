@@ -11,4 +11,4 @@ COPY . .
 RUN ./mvnw clean package -DskipTests
 
 # Run the jar file (adjust target jar name if needed)
-CMD ["java", "-jar", "target/your-app-name.jar"]
+CMD ["sh", "-c", "java -jar target/*.jar"]
