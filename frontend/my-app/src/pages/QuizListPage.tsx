@@ -29,13 +29,28 @@ const QuizListPage: React.FC = () => {
   return (
     <div className="p-6 max-w-5xl mx-auto">
       <h2 className="text-2xl font-bold mb-4">Available Quizzes</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {quizzes.map((quiz) => (
+      {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {quizzes.length==0? (<span>No quizzes available</span>):(
+          quizzes.map((quiz) => (
           <Link to={`/quiz/${quiz.id}`} key={quiz.id}>
             <QuizCard quiz={quiz} />
           </Link>
-        ))}
-      </div>
+        ))
+        )}
+      </div> */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+  {quizzes.length === 0 ? (
+    <span className="col-span-full text-center text-gray-500">
+      No quizzes available
+    </span>
+  ) : (
+    quizzes.map((quiz) => (
+      <Link to={`/quiz/${quiz.id}`} key={quiz.id}>
+        <QuizCard quiz={quiz} />
+      </Link>
+    ))
+  )}
+</div> 
     </div>
   );
 };

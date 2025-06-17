@@ -17,13 +17,13 @@ public class Quiz {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String title;
-	
+	 
 	@ManyToMany
 	@JoinTable(
 		    name = "quiz_questions",
 		    joinColumns = @JoinColumn(name = "quiz_id", referencedColumnName = "id"),
 		    inverseJoinColumns = @JoinColumn(name = "question_id", referencedColumnName = "id")
-		)
+		    )
 	private List<QuestionEntity> questions;
 
 	public Integer getId() {
@@ -45,7 +45,7 @@ public class Quiz {
 	public List<QuestionEntity> getQuestions() {
 		return questions;
 	}
-
+ 
 	public void setQuestions(List<QuestionEntity> questions) {
 		this.questions = questions;
 	}

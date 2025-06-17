@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.infy.quizapp.entity.QuestionEntity;
@@ -13,8 +14,7 @@ public interface QuestionRepository extends JpaRepository<QuestionEntity, Intege
 
 	List<QuestionEntity> findByCategory(String category);
 
-	@Query(value="SELECT * FROM Question q WHERE q.category=:category order by RAND() limit :noOfQues", nativeQuery = true)
-	List<QuestionEntity> findRandomQuestionsByCategory(String category, int noOfQues);
-	
+	@Query(value="SELECT * FROM question q WHERE LOWER(q.category) = LOWER(:category) ORDER BY RANDOM() LIMIT :noOfQues", nativeQuery = true)
+    List<QuestionEntity> findRandomQuestionsByCategory(@Param("category") String category, @Param("noOfQues") int noOfQues);
 	
 }

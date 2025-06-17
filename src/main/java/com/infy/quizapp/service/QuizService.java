@@ -16,15 +16,18 @@ import com.infy.quizapp.entity.Quiz;
 import com.infy.quizapp.repository.QuestionRepository;
 import com.infy.quizapp.repository.QuizRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class QuizService {
 	
 	@Autowired
 	QuizRepository quizRepo;
 	
-	@Autowired
+	@Autowired 
 	QuestionRepository quesRepo;
 
+	@Transactional
 	public ResponseEntity<String> createQuiz(String category, int noOfQues, String title) {
 		List<QuestionEntity> ques = quesRepo.findRandomQuestionsByCategory(category, noOfQues);
 		
